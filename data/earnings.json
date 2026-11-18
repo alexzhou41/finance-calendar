@@ -114,7 +114,7 @@
         "Earnings Time": "TAS",
         "Fiscal Quarter": "2026Q4",
         "Fiscal Quarter Source": "calendar-quarter fallback; Yahoo does not expose a fiscal period here",
-        "Revenue Estimate": "1.431e+11",
+        "Revenue Estimate": "1.423e+11",
         "Ticker": "GOOGL"
       },
       "end": "2026-10-29",
@@ -213,12 +213,12 @@
       "category": "earnings",
       "description": {
         "Company": "NVIDIA Corporation",
-        "EPS Estimate": "2.473",
+        "EPS Estimate": "2.761",
         "Earnings Date": "2026-11-17",
         "Earnings Time": "TAS",
         "Fiscal Quarter": "2026Q4",
         "Fiscal Quarter Source": "calendar-quarter fallback; Yahoo does not expose a fiscal period here",
-        "Revenue Estimate": "1.087e+11",
+        "Revenue Estimate": "1.249e+11",
         "Ticker": "NVDA"
       },
       "end": "2026-11-18",
@@ -261,6 +261,6 @@
       "uid": "earnings-TSM-2027Q1@finance-calendar"
     }
   ],
-  "updated_at": "2026-11-17T20:33:55+00:00",
+  "updated_at": "2026-11-18T07:01:51+00:00",
   "version": 1
 }
