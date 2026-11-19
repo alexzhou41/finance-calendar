@@ -4,7 +4,8 @@ PRODID:-//FOMC Event Study//Reminder Calendar//CN
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
 X-WR-CALNAME:FOMC 会议 + 策略操作提醒
-X-WR-CALDESC:FOMC 利率决议声明 + 会议周空仓策略的卖出/买回提醒 (A 股/港股/美股三套口径)
+X-WR-CALDESC:FOMC 利率决议声明 + 会议周空仓策略的卖出/买
+ 回提醒 (A 股/港股/美股三套口径)
 X-WR-TIMEZONE:Asia/Shanghai
 BEGIN:VEVENT
 UID:fomc-decision-2026-12-09@fomc-event-study
