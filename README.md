@@ -2,14 +2,23 @@
 
 一个无需服务器、数据库或付费 API Key 的开源 ICS 日历生成器。它从官方发布日程和可用的免费金融数据源更新事件，通过 GitHub Actions 每天运行两次，并把 `dist/` 发布到 GitHub Pages。
 
-生成四个可独立订阅的日历：
+生成五个可独立订阅的日历：
 
 | 文件 | 内容 |
 | --- | --- |
 | `macro.ics` | 美国重要宏观数据、FOMC、初请失业金、ISM PMI |
 | `earnings.ics` | `config.yaml` 中的自选股财报 |
 | `market.ics` | NYSE 休市、提前收市、美股四巫日 |
-| `all.ics` | 上述三个日历的去重合并 |
+| `china.ics` | 中国人民银行货币政策日程：季度例会与通稿、LPR、MLF、金融统计数据发布会、货币政策执行报告 |
+| `all.ics` | 上述四个日历的去重合并 |
+
+`dist/` 下另有三个研究版静态日历，它们不随 Actions 更新，由研究项目直接产出：
+
+| 文件 | 内容 |
+| --- | --- |
+| `fomc_reminder.ics` | FOMC 会议与会议周策略操作提醒，含 VALARM |
+| `pboc_reminder.ics` | 中国货币政策日程提醒（MPS 例会/LPR/MLF/统计/MPR），含 VALARM 与“官方确认/推算”标注 |
+| `pboc_actions.ics` | 中国操作提醒：MPS 通稿后多头（MPS 口径），共 10 个操作事件 |
 
 项目重点不是堆积指标，而是保证核心事件、稳定 UID、时区/DST 和单个数据源故障时的可用性。事件标题和备注均采用中文，股票代码、常用指标缩写及来源网址按原样保留。
 
@@ -31,7 +40,9 @@
 https://USERNAME.github.io/finance-calendar/macro.ics
 https://USERNAME.github.io/finance-calendar/earnings.ics
 https://USERNAME.github.io/finance-calendar/market.ics
+https://USERNAME.github.io/finance-calendar/china.ics
 https://USERNAME.github.io/finance-calendar/all.ics
+https://USERNAME.github.io/finance-calendar/pboc_reminder.ics
 ```
 
 如果仓库改了名字，URL 中也要使用实际仓库名。GitHub Pages 首次发布通常需要短暂等待。
@@ -116,6 +127,14 @@ market:
   holidays: true
   early_close: true
   quadruple_witching: true
+
+china:
+  mps: true
+  lpr: true
+  mlf: true
+  statistics: true
+  mpr: true
+  sensitive_window: true
 ```
 
 - `timezone` 必须是 IANA 时区名，例如 `Asia/Shanghai`、`America/New_York`。
@@ -161,10 +180,11 @@ python -m src.main --today 2026-09-15 --offline
 | 自选股财报 | [Yahoo Finance](https://finance.yahoo.com/) via `yfinance` | 免费、无需 Key，适合逐股票更新日期、公司名及可得的 EPS/营收预估；每个股票独立失败和回退。 |
 | NYSE 休市与提前收市 | [`pandas-market-calendars`](https://github.com/rsheftel/pandas_market_calendars) 的 NYSE calendar | 库包含 NYSE 节假日、observed holiday 和 special close 规则；事件 Description 链接 [NYSE Hours & Calendars](https://www.nyse.com/markets/hours-calendars) 便于复核。 |
 | 四巫日 | 季度规则 | 计算 3、6、9、12 月第三个星期五，稳定且无需外部 API。 |
+| 中国货币政策日程 | 中国人民银行公开规则与官网例会日程 | 央行不提前公布次年例会日期，因此例会按各季度历史节奏推算。**规则经央行官网 2005 年以来 85 个官方季度反向验证**：取各季度实际会议日的 (月, 日) 中位数（Q1=3/29、Q2=6/28、Q3=9/26、Q4=12/26），落在周末前移到周五；实测逐日精确命中 17.6%、绝对误差中位 2 天、≤3 天 67.1%、≤7 天 84.7%。通稿日按会议日后首个交易日推算，69 个有通稿日的季度中精确命中 31.9%、提前 59.4%、推后 8.7%（偏向提前，适合做提醒）。已在官网通稿确认的季度直接使用官方日期。LPR、MLF、金融统计数据发布会与货币政策执行报告按固定发布规律生成。Description 中逐条标注"官方通稿确认"或"推算"并附历史区间与准确率。验证脚本与 fixture 见 `tests/test_china_provider.py` 与 `tests/fixtures/official_mps_dates.csv`。 |
 
 ## 缓存与故障策略
 
-`data/macro.json`、`data/earnings.json`、`data/market.json` 是需要提交到 Git 的最近成功快照：
+`data/macro.json`、`data/earnings.json`、`data/market.json`、`data/china.json` 是需要提交到 Git 的最近成功快照：
 
 1. 每个来源、每个股票都有独立 `scope`。
 2. 某个 scope 成功时，只替换该 scope 的旧事件。
@@ -181,7 +201,8 @@ python -m src.main --today 2026-09-15 --offline
 - 只有日期的数据写成 `VALUE=DATE` 全天事件，`DTEND` 按 RFC 5545 使用排他结束日期。
 - 宏观 UID 使用指标和参考期，例如 `macro-US-CPI-2026-09@finance-calendar`。
 - 财报 UID 首次使用股票和季度，后续抓取会把新日期与旧缓存配对并复用 UID；日期调整不会在 Apple Calendar 中创建重复事件。
-- `all.ics` 按 UID 去重；校验器要求它的 UID 集合与三个子日历的并集完全一致。
+- 中国日程 UID 形如 `china-CN-MPS-COMMUNIQUE-2026Q4@finance-calendar`、`china-CN-LPR-2026-12@finance-calendar`，按"类型+期间"规则化生成，重跑不会产生重复事件。
+- `all.ics` 按 UID 去重；校验器要求它的 UID 集合与四个子日历的并集完全一致。
 
 ## GitHub Pages 与 MIME / 缓存
 
@@ -202,7 +223,8 @@ GitHub Pages 通常会为 `.ics` 返回可用的静态文件响应。即使服�
 5. `pandas-market-calendars` 是随 Python 包发布的规则库，不是 NYSE 实时 API。交易所临时停市需要库更新或手工修正。
 6. FOMC 决议按常规 14:00 ET、纪要按常规 14:00 ET 建模；临时会议或特别公告不在当前版本自动抓取范围内。
 7. Jackson Hole 与 Powell 讲话没有稳定且结构统一的官方未来日程接口，第一版没有加入，以避免低可信事件。
-8. 受保护的默认分支可能拒绝 Actions 自动 push。此时需允许 `github-actions[bot]` 写入，或自行把更新改造成 PR 流程。
+8. 中国例会日期为推算值。央行官网不提前公布次年例会日期；推算在 85 个官方季度上实测绝对误差中位 2 天、≤3 天 67.1%，且少数年份（如 2023Q1 实际 4 月 7 日）会明显偏离中位数。已确认季度以官方通稿为准，临时调整无法自动跟随。通稿日规则同样有误差，会偏向提前 1–2 天。
+9. 受保护的默认分支可能拒绝 Actions 自动 push。此时需允许 `github-actions[bot]` 写入，或自行把更新改造成 PR 流程。
 
 这些日历仅用于信息提醒，不构成投资建议或交易所正式交易安排。重要交易决策应再次核对原始来源。
 
@@ -219,7 +241,8 @@ src/
 │   ├── macro.py            # 宏观来源编排
 │   ├── bls.py / bea.py ... # 独立官方来源解析器
 │   ├── earnings.py         # 财报及稳定 UID 对账
-│   └── market.py           # NYSE 与四巫日
+│   ├── market.py           # NYSE 与四巫日
+│   └── china.py            # 中国人民银行货币政策日程（规则型）
 └── utils/                  # HTTP、缓存、时区
 ```
 

@@ -42,3 +42,11 @@ market:
   holidays: true
   early_close: true
   quadruple_witching: true
+
+china:
+  mps: true
+  lpr: true
+  mlf: true
+  statistics: true
+  mpr: true
+  sensitive_window: true

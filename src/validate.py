@@ -41,14 +41,22 @@ def validate_file(path: Path) -> set[str]:
 
 
 def validate_directory(dist: Path) -> dict[str, set[str]]:
-    expected = {name: dist / f"{name}.ics" for name in ("macro", "earnings", "market", "all")}
+    expected = {
+        name: dist / f"{name}.ics"
+        for name in ("macro", "earnings", "market", "china", "all")
+    }
     missing = [str(path) for path in expected.values() if not path.exists()]
     if missing:
         raise ValueError(f"missing calendar files: {', '.join(missing)}")
     uid_sets = {name: validate_file(path) for name, path in expected.items()}
-    combined = uid_sets["macro"] | uid_sets["earnings"] | uid_sets["market"]
+    combined = (
+        uid_sets["macro"]
+        | uid_sets["earnings"]
+        | uid_sets["market"]
+        | uid_sets["china"]
+    )
     if uid_sets["all"] != combined:
-        raise ValueError("all.ics UID set does not equal the three component calendars")
+        raise ValueError("all.ics UID set does not equal the component calendars")
     return uid_sets
 
 

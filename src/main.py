@@ -7,6 +7,7 @@ from pathlib import Path
 
 from src.calendar import build_calendar, write_calendar
 from src.config import load_config
+from src.providers.china import fetch_china_events
 from src.providers.earnings import fetch_earnings_events
 from src.providers.macro import fetch_macro_events
 from src.providers.market import fetch_market_events
@@ -38,7 +39,8 @@ def generate(
     session = build_session()
 
     previous: dict[str, CacheSnapshot] = {
-        category: store.load(category) for category in ("macro", "earnings", "market")
+        category: store.load(category)
+        for category in ("macro", "earnings", "market", "china")
     }
     results = {
         "macro": fetch_macro_events(
@@ -55,6 +57,12 @@ def generate(
             offline=offline,
         ),
         "market": fetch_market_events(config, now=now),
+        "china": fetch_china_events(
+            config,
+            previous["china"].events,
+            now=now,
+            offline=offline,
+        ),
     }
 
     current: dict[str, CacheSnapshot] = {}
@@ -72,7 +80,7 @@ def generate(
             LOGGER.warning("%s", warning)
 
     updated_at = {category: snapshot.updated_at for category, snapshot in current.items()}
-    for category in ("macro", "earnings", "market"):
+    for category in ("macro", "earnings", "market", "china"):
         calendar = build_calendar(
             current[category].events,
             category=category,
@@ -82,7 +90,11 @@ def generate(
         )
         write_calendar(calendar, root / "dist" / f"{category}.ics")
 
-    all_events = [event for category in ("macro", "earnings", "market") for event in current[category].events]
+    all_events = [
+        event
+        for category in ("macro", "earnings", "market", "china")
+        for event in current[category].events
+    ]
     all_calendar = build_calendar(
         all_events,
         category="all",

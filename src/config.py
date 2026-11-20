@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any
 from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
@@ -23,6 +23,7 @@ class AppConfig:
     market: dict[str, bool]
     request_timeout_seconds: int
     claims_weeks_ahead: int
+    china: dict[str, bool] = field(default_factory=lambda: dict(CHINA_DEFAULTS))
 
 
 MACRO_DEFAULTS = {
@@ -47,6 +48,15 @@ MARKET_DEFAULTS = {
     "holidays": True,
     "early_close": True,
     "quadruple_witching": True,
+}
+
+CHINA_DEFAULTS = {
+    "mps": True,
+    "lpr": True,
+    "mlf": True,
+    "statistics": True,
+    "mpr": True,
+    "sensitive_window": True,
 }
 
 
@@ -110,6 +120,7 @@ def load_config(path: str | Path) -> AppConfig:
         stocks=stocks,
         macro=_bool_section(raw.get("macro"), MACRO_DEFAULTS, "macro"),
         market=_bool_section(raw.get("market"), MARKET_DEFAULTS, "market"),
+        china=_bool_section(raw.get("china"), CHINA_DEFAULTS, "china"),
         request_timeout_seconds=request_timeout_seconds,
         claims_weeks_ahead=claims_weeks_ahead,
     )

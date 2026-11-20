@@ -14,6 +14,7 @@ CALENDAR_TITLES = {
     "macro": "宏观经济",
     "earnings": "自选股财报",
     "market": "市场交易",
+    "china": "中国货币政策",
     "all": "全部事件",
 }
 

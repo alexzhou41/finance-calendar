@@ -48,7 +48,12 @@ def _write(events: list[CalendarEvent], category: str, path: Path) -> None:
         category=category,
         calendar_name="Test",
         timezone_name="Asia/Shanghai",
-        updated_at_by_category={"macro": stamp, "earnings": stamp, "market": stamp},
+        updated_at_by_category={
+            "macro": stamp,
+            "earnings": stamp,
+            "market": stamp,
+            "china": stamp,
+        },
     )
     write_calendar(calendar, path)
 
@@ -119,9 +124,11 @@ def test_all_calendar_is_exact_union_without_duplicates(tmp_path: Path) -> None:
     macro = [_timed("macro@example")]
     earnings = [_all_day("earnings@example", "earnings")]
     market = [_all_day("market@example")]
+    china = [_all_day("china@example", "china")]
     _write(macro, "macro", tmp_path / "macro.ics")
     _write(earnings, "earnings", tmp_path / "earnings.ics")
     _write(market, "market", tmp_path / "market.ics")
-    _write(macro + earnings + market + macro, "all", tmp_path / "all.ics")
+    _write(china, "china", tmp_path / "china.ics")
+    _write(macro + earnings + market + china + macro, "all", tmp_path / "all.ics")
     result = validate_directory(tmp_path)
-    assert len(result["all"]) == 3
+    assert len(result["all"]) == 4
