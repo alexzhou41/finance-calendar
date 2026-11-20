@@ -313,3 +313,14 @@ def test_publish_rule_leans_early_rather_than_late() -> None:
     late = sum(1 for value in signed if value > 0) / len(signed)
     assert early >= 0.50, early
     assert late <= 0.15, late
+
+
+def test_publish_date_just_after_the_window_end_is_still_correct() -> None:
+    """窗口末尾的例会, 其通稿日可能落在 end 之后, 交易日集合不能被截断。"""
+    events = build_china_events(_config(), start=date(2027, 12, 1), end=date(2027, 12, 25))
+    indexed = _by_uid(events)
+    meeting = indexed["china-CN-MPS-MEETING-2027Q4@finance-calendar"]
+    communique = indexed["china-CN-MPS-COMMUNIQUE-2027Q4@finance-calendar"]
+    assert _day(meeting) == date(2027, 12, 24)
+    assert _day(communique) == date(2027, 12, 27)
+    assert (_day(communique) - _day(meeting)).days <= 5

@@ -11,14 +11,14 @@ X-WR-CALDESC:按 S8 口径: MPS 季度例会通稿发布日买入 A股\, 4
  验的多重比较问题见 REPORT。
 X-WR-TIMEZONE:Asia/Shanghai
 BEGIN:VEVENT
-UID:pboc-act-buy-20261229-mps@pboc-event-study
+UID:pboc-act-buy-20261225-mps@pboc-event-study
 DTSTAMP:20261119T070000Z
-DTSTART:20261229T013000Z
-DTEND:20261229T020000Z
+DTSTART:20261225T013000Z
+DTEND:20261225T020000Z
 SUMMARY:【操作·买入】A股 — 2026Q4 MPS例会通稿后多头
-DESCRIPTION:MPS 2026Q4 例会通稿预计 2026-12-28 发布 (推算值\, 
+DESCRIPTION:MPS 2026Q4 例会通稿预计 2026-12-24 发布 (推算值\, 
  央行不提前公布次年例会日期\; 实盘以央行官网《例会
- 信息》为准)。\\n操作: 2026-12-29 开盘买入 A股 -> 2027-01-05 
+ 信息》为准)。\\n操作: 2026-12-25 开盘买入 A股 -> 2026-12-31 
  收盘卖出\\n口径: S8 (FOMC 版'纯周后多头'的中国同构)\, 
  见 REPORT §策略。\\n依据: 置换检验 上证 p=0.010 / 深证 p=0
  .022 / 恒生 p=0.010 (Sharpe 恒生 p=0.006)。\\n注意: 本项目共
@@ -31,7 +31,7 @@ SEQUENCE:0
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-P1D
-DESCRIPTION:明天 2026-12-29 开盘买入 A股 (2026Q4 MPS 通稿后)
+DESCRIPTION:明天 2026-12-25 开盘买入 A股 (2026Q4 MPS 通稿后)
 END:VALARM
 BEGIN:VALARM
 ACTION:DISPLAY
@@ -40,13 +40,13 @@ DESCRIPTION:2 小时后 09:30 开盘买入 A股 (2026Q4 MPS 通稿后)
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:pboc-act-sell-20270105-mps@pboc-event-study
+UID:pboc-act-sell-20261231-mps@pboc-event-study
 DTSTAMP:20261119T070000Z
-DTSTART:20270105T070000Z
-DTEND:20270105T071500Z
+DTSTART:20261231T070000Z
+DTEND:20261231T071500Z
 SUMMARY:【操作·卖出】A股 — 2026Q4 MPS例会通稿后多头结束
 DESCRIPTION:MPS 2026Q4 通稿后 4 个交易日持有期结束。\\n操作:
-  2027-01-05 收盘卖出 A股\\n口径: S8 (通稿反应日买入 -> +4 
+  2026-12-31 收盘卖出 A股\\n口径: S8 (通稿反应日买入 -> +4 
  交易日卖出)。
 CATEGORIES:中国货币政策,操作,卖出
 STATUS:CONFIRMED
@@ -54,14 +54,14 @@ TRANSP:TRANSPARENT
 SEQUENCE:0
 END:VEVENT
 BEGIN:VEVENT
-UID:pboc-act-buy-20270330-mps@pboc-event-study
+UID:pboc-act-buy-20270402-mps@pboc-event-study
 DTSTAMP:20261119T070000Z
-DTSTART:20270330T013000Z
-DTEND:20270330T020000Z
+DTSTART:20270402T013000Z
+DTEND:20270402T020000Z
 SUMMARY:【操作·买入】A股 — 2027Q1 MPS例会通稿后多头
-DESCRIPTION:MPS 2027Q1 例会通稿预计 2027-03-29 发布 (推算值\, 
+DESCRIPTION:MPS 2027Q1 例会通稿预计 2027-04-01 发布 (推算值\, 
  央行不提前公布次年例会日期\; 实盘以央行官网《例会
- 信息》为准)。\\n操作: 2027-03-30 开盘买入 A股 -> 2027-04-06 
+ 信息》为准)。\\n操作: 2027-04-02 开盘买入 A股 -> 2027-04-09 
  收盘卖出\\n口径: S8 (FOMC 版'纯周后多头'的中国同构)\, 
  见 REPORT §策略。\\n依据: 置换检验 上证 p=0.010 / 深证 p=0
  .022 / 恒生 p=0.010 (Sharpe 恒生 p=0.006)。\\n注意: 本项目共
@@ -74,7 +74,7 @@ SEQUENCE:0
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-P1D
-DESCRIPTION:明天 2027-03-30 开盘买入 A股 (2027Q1 MPS 通稿后)
+DESCRIPTION:明天 2027-04-02 开盘买入 A股 (2027Q1 MPS 通稿后)
 END:VALARM
 BEGIN:VALARM
 ACTION:DISPLAY
@@ -83,13 +83,13 @@ DESCRIPTION:2 小时后 09:30 开盘买入 A股 (2027Q1 MPS 通稿后)
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:pboc-act-sell-20270406-mps@pboc-event-study
+UID:pboc-act-sell-20270409-mps@pboc-event-study
 DTSTAMP:20261119T070000Z
-DTSTART:20270406T070000Z
-DTEND:20270406T071500Z
+DTSTART:20270409T070000Z
+DTEND:20270409T071500Z
 SUMMARY:【操作·卖出】A股 — 2027Q1 MPS例会通稿后多头结束
 DESCRIPTION:MPS 2027Q1 通稿后 4 个交易日持有期结束。\\n操作:
-  2027-04-06 收盘卖出 A股\\n口径: S8 (通稿反应日买入 -> +4 
+  2027-04-09 收盘卖出 A股\\n口径: S8 (通稿反应日买入 -> +4 
  交易日卖出)。
 CATEGORIES:中国货币政策,操作,卖出
 STATUS:CONFIRMED
@@ -97,14 +97,14 @@ TRANSP:TRANSPARENT
 SEQUENCE:0
 END:VEVENT
 BEGIN:VEVENT
-UID:pboc-act-buy-20270628-mps@pboc-event-study
+UID:pboc-act-buy-20270705-mps@pboc-event-study
 DTSTAMP:20261119T070000Z
-DTSTART:20270628T013000Z
-DTEND:20270628T020000Z
+DTSTART:20270705T013000Z
+DTEND:20270705T020000Z
 SUMMARY:【操作·买入】A股 — 2027Q2 MPS例会通稿后多头
-DESCRIPTION:MPS 2027Q2 例会通稿预计 2027-06-25 发布 (推算值\, 
+DESCRIPTION:MPS 2027Q2 例会通稿预计 2027-07-02 发布 (推算值\, 
  央行不提前公布次年例会日期\; 实盘以央行官网《例会
- 信息》为准)。\\n操作: 2027-06-28 开盘买入 A股 -> 2027-07-02 
+ 信息》为准)。\\n操作: 2027-07-05 开盘买入 A股 -> 2027-07-09 
  收盘卖出\\n口径: S8 (FOMC 版'纯周后多头'的中国同构)\, 
  见 REPORT §策略。\\n依据: 置换检验 上证 p=0.010 / 深证 p=0
  .022 / 恒生 p=0.010 (Sharpe 恒生 p=0.006)。\\n注意: 本项目共
@@ -117,7 +117,7 @@ SEQUENCE:0
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-P1D
-DESCRIPTION:明天 2027-06-28 开盘买入 A股 (2027Q2 MPS 通稿后)
+DESCRIPTION:明天 2027-07-05 开盘买入 A股 (2027Q2 MPS 通稿后)
 END:VALARM
 BEGIN:VALARM
 ACTION:DISPLAY
@@ -126,13 +126,13 @@ DESCRIPTION:2 小时后 09:30 开盘买入 A股 (2027Q2 MPS 通稿后)
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:pboc-act-sell-20270702-mps@pboc-event-study
+UID:pboc-act-sell-20270709-mps@pboc-event-study
 DTSTAMP:20261119T070000Z
-DTSTART:20270702T070000Z
-DTEND:20270702T071500Z
+DTSTART:20270709T070000Z
+DTEND:20270709T071500Z
 SUMMARY:【操作·卖出】A股 — 2027Q2 MPS例会通稿后多头结束
 DESCRIPTION:MPS 2027Q2 通稿后 4 个交易日持有期结束。\\n操作:
-  2027-07-02 收盘卖出 A股\\n口径: S8 (通稿反应日买入 -> +4 
+  2027-07-09 收盘卖出 A股\\n口径: S8 (通稿反应日买入 -> +4 
  交易日卖出)。
 CATEGORIES:中国货币政策,操作,卖出
 STATUS:CONFIRMED
@@ -140,14 +140,14 @@ TRANSP:TRANSPARENT
 SEQUENCE:0
 END:VEVENT
 BEGIN:VEVENT
-UID:pboc-act-buy-20270928-mps@pboc-event-study
+UID:pboc-act-buy-20270930-mps@pboc-event-study
 DTSTAMP:20261119T070000Z
-DTSTART:20270928T013000Z
-DTEND:20270928T020000Z
+DTSTART:20270930T013000Z
+DTEND:20270930T020000Z
 SUMMARY:【操作·买入】A股 — 2027Q3 MPS例会通稿后多头
-DESCRIPTION:MPS 2027Q3 例会通稿预计 2027-09-27 发布 (推算值\, 
+DESCRIPTION:MPS 2027Q3 例会通稿预计 2027-09-29 发布 (推算值\, 
  央行不提前公布次年例会日期\; 实盘以央行官网《例会
- 信息》为准)。\\n操作: 2027-09-28 开盘买入 A股 -> 2027-10-11 
+ 信息》为准)。\\n操作: 2027-09-30 开盘买入 A股 -> 2027-10-13 
  收盘卖出\\n口径: S8 (FOMC 版'纯周后多头'的中国同构)\, 
  见 REPORT §策略。\\n依据: 置换检验 上证 p=0.010 / 深证 p=0
  .022 / 恒生 p=0.010 (Sharpe 恒生 p=0.006)。\\n注意: 本项目共
@@ -160,7 +160,7 @@ SEQUENCE:0
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-P1D
-DESCRIPTION:明天 2027-09-28 开盘买入 A股 (2027Q3 MPS 通稿后)
+DESCRIPTION:明天 2027-09-30 开盘买入 A股 (2027Q3 MPS 通稿后)
 END:VALARM
 BEGIN:VALARM
 ACTION:DISPLAY
@@ -169,13 +169,13 @@ DESCRIPTION:2 小时后 09:30 开盘买入 A股 (2027Q3 MPS 通稿后)
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:pboc-act-sell-20271011-mps@pboc-event-study
+UID:pboc-act-sell-20271013-mps@pboc-event-study
 DTSTAMP:20261119T070000Z
-DTSTART:20271011T070000Z
-DTEND:20271011T071500Z
+DTSTART:20271013T070000Z
+DTEND:20271013T071500Z
 SUMMARY:【操作·卖出】A股 — 2027Q3 MPS例会通稿后多头结束
 DESCRIPTION:MPS 2027Q3 通稿后 4 个交易日持有期结束。\\n操作:
-  2027-10-11 收盘卖出 A股\\n口径: S8 (通稿反应日买入 -> +4 
+  2027-10-13 收盘卖出 A股\\n口径: S8 (通稿反应日买入 -> +4 
  交易日卖出)。
 CATEGORIES:中国货币政策,操作,卖出
 STATUS:CONFIRMED
@@ -183,14 +183,14 @@ TRANSP:TRANSPARENT
 SEQUENCE:0
 END:VEVENT
 BEGIN:VEVENT
-UID:pboc-act-buy-20271228-mps@pboc-event-study
+UID:pboc-act-buy-20271227-mps@pboc-event-study
 DTSTAMP:20261119T070000Z
-DTSTART:20271228T013000Z
-DTEND:20271228T020000Z
+DTSTART:20271227T013000Z
+DTEND:20271227T020000Z
 SUMMARY:【操作·买入】A股 — 2027Q4 MPS例会通稿后多头
-DESCRIPTION:MPS 2027Q4 例会通稿预计 2027-12-27 发布 (推算值\, 
+DESCRIPTION:MPS 2027Q4 例会通稿预计 2027-12-24 发布 (推算值\, 
  央行不提前公布次年例会日期\; 实盘以央行官网《例会
- 信息》为准)。\\n操作: 2027-12-28 开盘买入 A股 -> 2028-01-03 
+ 信息》为准)。\\n操作: 2027-12-27 开盘买入 A股 -> 2027-12-31 
  收盘卖出\\n口径: S8 (FOMC 版'纯周后多头'的中国同构)\, 
  见 REPORT §策略。\\n依据: 置换检验 上证 p=0.010 / 深证 p=0
  .022 / 恒生 p=0.010 (Sharpe 恒生 p=0.006)。\\n注意: 本项目共
@@ -203,7 +203,7 @@ SEQUENCE:0
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-P1D
-DESCRIPTION:明天 2027-12-28 开盘买入 A股 (2027Q4 MPS 通稿后)
+DESCRIPTION:明天 2027-12-27 开盘买入 A股 (2027Q4 MPS 通稿后)
 END:VALARM
 BEGIN:VALARM
 ACTION:DISPLAY
@@ -212,13 +212,13 @@ DESCRIPTION:2 小时后 09:30 开盘买入 A股 (2027Q4 MPS 通稿后)
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:pboc-act-sell-20280103-mps@pboc-event-study
+UID:pboc-act-sell-20271231-mps@pboc-event-study
 DTSTAMP:20261119T070000Z
-DTSTART:20280103T070000Z
-DTEND:20280103T071500Z
+DTSTART:20271231T070000Z
+DTEND:20271231T071500Z
 SUMMARY:【操作·卖出】A股 — 2027Q4 MPS例会通稿后多头结束
 DESCRIPTION:MPS 2027Q4 通稿后 4 个交易日持有期结束。\\n操作:
-  2028-01-03 收盘卖出 A股\\n口径: S8 (通稿反应日买入 -> +4 
+  2027-12-31 收盘卖出 A股\\n口径: S8 (通稿反应日买入 -> +4 
  交易日卖出)。
 CATEGORIES:中国货币政策,操作,卖出
 STATUS:CONFIRMED

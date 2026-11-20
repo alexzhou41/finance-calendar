@@ -5,24 +5,6 @@
       "category": "china",
       "description": {
         "Event": "1 年期与 5 年期以上 LPR 报价（全国银行间同业拆借中心）",
-        "Reference Period": "2026-10",
-        "Schedule Method": "每月 20 日 09:00 前报价，当日公布；遇休市顺延至下一交易日"
-      },
-      "end": "2026-10-21T09:30:00+08:00",
-      "kind": "lpr",
-      "metadata": {},
-      "scope": "china:rules",
-      "source": "中国人民银行（PBC）公开规则与官网例会日程",
-      "source_url": "https://www.pbc.gov.cn/zhengcehuobisi/125207/3870933/3870936/index.html",
-      "start": "2026-10-21T09:00:00+08:00",
-      "summary": "🏦 LPR 报价公布",
-      "uid": "china-CN-LPR-2026-10@finance-calendar"
-    },
-    {
-      "all_day": false,
-      "category": "china",
-      "description": {
-        "Event": "1 年期与 5 年期以上 LPR 报价（全国银行间同业拆借中心）",
         "Reference Period": "2026-11",
         "Schedule Method": "每月 20 日 09:00 前报价，当日公布；遇休市顺延至下一交易日"
       },
@@ -689,16 +671,16 @@
       "category": "china",
       "description": {
         "Event": "货币政策委员会季度例会通稿发布（历史：会后 1–7 个自然日，中位 3 天；94.3% 在 15:00 之后发布，中位 17 点；本规则按会后首个交易日推算，69 个有通稿日的季度中精确命中 31.9%、提前 59.4%、推后 8.7%）",
-        "Meeting": "2027-12-24 至 2028-02-03",
+        "Meeting": "2027-12-24 至 2027-12-27",
         "Schedule Method": "按 2005 年以来同季度官方会议日中位数推算（历史区间 12 月 16 日 – 12 月 31 日，逐日精确命中 17.6%、绝对误差中位 2 天、≤3 天 67.1%）；央行不提前公布次年例会日期"
       },
-      "end": "2028-02-03T17:30:00+08:00",
+      "end": "2027-12-27T17:30:00+08:00",
       "kind": "mps_communique",
       "metadata": {},
       "scope": "china:rules",
       "source": "中国人民银行（PBC）公开规则与官网例会日程",
       "source_url": "https://www.pbc.gov.cn/zhengcehuobisi/125207/3870933/3870936/index.html",
-      "start": "2028-02-03T17:00:00+08:00",
+      "start": "2027-12-27T17:00:00+08:00",
       "summary": "🏦 货币政策委员会 2027 年第 4 季度例会通稿",
       "uid": "china-CN-MPS-COMMUNIQUE-2027Q4@finance-calendar"
     },
@@ -995,24 +977,6 @@
       "category": "china",
       "description": {
         "Event": "中国人民银行与国家统计局联合发布月度金融数据",
-        "Reference Period": "2026-10",
-        "Schedule Method": "按该月历史发布日中位数（第 15 日）推算；遇休市顺延"
-      },
-      "end": "2026-10-21T17:00:00+08:00",
-      "kind": "statistics",
-      "metadata": {},
-      "scope": "china:rules",
-      "source": "中国人民银行（PBC）公开规则与官网例会日程",
-      "source_url": "https://www.pbc.gov.cn/zhengcehuobisi/125207/3870933/3870936/index.html",
-      "start": "2026-10-21T16:30:00+08:00",
-      "summary": "🏦 金融统计数据新闻发布会",
-      "uid": "china-CN-STATISTICS-2026-10@finance-calendar"
-    },
-    {
-      "all_day": false,
-      "category": "china",
-      "description": {
-        "Event": "中国人民银行与国家统计局联合发布月度金融数据",
         "Reference Period": "2026-11",
         "Schedule Method": "按该月历史发布日中位数（第 22 日）推算；遇休市顺延"
       },
@@ -1261,6 +1225,6 @@
       "uid": "china-CN-STATISTICS-2027-12@finance-calendar"
     }
   ],
-  "updated_at": "2026-11-20T04:10:41+00:00",
+  "updated_at": "2026-11-20T04:15:42+00:00",
   "version": 1
 }

@@ -111,7 +111,7 @@ def _trading_days(start: date, end: date) -> set[date]:
 
 def _next_trading_day(day: date, trading_days: set[date]) -> date:
     cursor = day
-    for _ in range(40):
+    for _ in range(120):
         if cursor in trading_days:
             return cursor
         cursor += timedelta(days=1)
@@ -190,7 +190,9 @@ def build_china_events(
     end: date,
 ) -> list[CalendarEvent]:
     """生成 [start, end] 区间内的中国货币政策日程事件。"""
-    trading_days = _trading_days(start, end)
+    # 交易日集合向前后各多取 45 天: 窗口末尾事件的"次一交易日"可能落在 end 之后,
+    # 否则 _next_trading_day 会退到 40 次循环上限, 产生错误的远期日期。
+    trading_days = _trading_days(start - timedelta(days=45), end + timedelta(days=45))
     events: list[CalendarEvent] = []
     flags = config.china
 
