@@ -508,6 +508,24 @@
       "all_day": false,
       "category": "china",
       "description": {
+        "Event": "1 年期中期借贷便利（MLF）操作公告",
+        "Reference Period": "2027-12",
+        "Schedule Method": "每月 25 日左右操作；遇休市顺延至下一交易日"
+      },
+      "end": "2027-12-27T09:50:00+08:00",
+      "kind": "mlf",
+      "metadata": {},
+      "scope": "china:rules",
+      "source": "中国人民银行（PBC）公开规则与官网例会日程",
+      "source_url": "https://www.pbc.gov.cn/zhengcehuobisi/125207/3870933/3870936/index.html",
+      "start": "2027-12-27T09:20:00+08:00",
+      "summary": "🏦 MLF 操作公告",
+      "uid": "china-CN-MLF-2027-12@finance-calendar"
+    },
+    {
+      "all_day": false,
+      "category": "china",
+      "description": {
         "Event": "2026 年第 3 季度货币政策执行报告",
         "Reference Period": "2026-Q3",
         "Schedule Method": "历史上在上季结束后的第 2 个月发布，20 日前后；遇休市顺延"
@@ -1225,6 +1243,6 @@
       "uid": "china-CN-STATISTICS-2027-12@finance-calendar"
     }
   ],
-  "updated_at": "2026-11-20T04:15:42+00:00",
+  "updated_at": "2026-11-21T19:00:05+00:00",
   "version": 1
 }
